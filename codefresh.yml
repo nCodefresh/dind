@@ -1,0 +1,17 @@
+version: '1.0'
+
+steps:
+  build-prj:
+    type: build
+    description: docker in docker
+    image-name: ncodefresh/docker-in-docker
+    dockerfile: Dockerfile
+    tag: latest
+  push-to-dockerhub:
+    type: push
+    candidate: ${{build-prj}}
+    tag: latest
+  docker-in-docker:
+    image: ncodefresh/docker-in-docker:latest
+    commands:
+      - docker-in-docker run hello-world
