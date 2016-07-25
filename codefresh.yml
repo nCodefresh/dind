@@ -14,4 +14,4 @@ steps:
   docker-in-docker:
     image: ncodefresh/docker-in-docker:latest
     commands:
-      - docker-in-docker run hello-world
+      - docker run --privileged -t -i ncodefresh/docker-in-docker
